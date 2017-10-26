@@ -21,10 +21,13 @@ ENV TOMCAT_VERSION 8.0.47
 #https://www-eu.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz
 #https://www.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz
 
-RUN wget ${TOMCAT_BASE_URLS}/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
-	tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
-	rm apache-tomcat*.tar.gz && \
-	mv apache-tomcat* ${CATALINA_HOME}
+RUN cd /opt && \
+    echo "Installing Tomcat ${TOMCAT_VERSION}..." && \
+    wget -nv ${TOMCAT_BASE_URLS}/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz \
+    -O /opt/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+    tar xzf /opt/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+    rm  apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+    mv apache-tomcat-${TOMCAT_VERSION} ${CATALINA_HOME}
  
 EXPOSE 8080
 
