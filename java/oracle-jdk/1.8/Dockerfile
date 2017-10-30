@@ -7,13 +7,16 @@ RUN yum -y update && \
  yum -y install wget && \
  yum -y install tar
 
-# set Oracle Java8 variables
+#set Oracle Java8 variables
 ENV JAVA_VERSION 8u151
 ENV JAVA_BUILD 8u151-b12
 ENV JAVA_DL_HASH e758a0de34e24606bca991d704f6dcbf
+ENV ORACLE_MIRROR_URL http://download.oracle.com
 
-RUN cd /opt; wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/${JAVA_BUILD}/${JAVA_DL_HASH}/jdk-${JAVA_VERSION}-linux-x64.tar.gz"
-RUN cd /opt; tar -zxf jdk-${JAVA_VERSION}-linux-x64.tar.gz
+RUN echo "Download Oracle JDK ${JAVA_VERSION}..." && \
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "${ORACLE_MIRROR_URL}/otn-pub/java/jdk/${JAVA_BUILD}/${JAVA_DL_HASH}/jdk-${JAVA_VERSION}-linux-x64.tar.gz" -O /tmp/jdk-${JAVA_VERSION}.tgz && \
+tar xzf /tmp/jdk-${JAVA_VERSION}.tgz -C /opt && \
+rm /tmp/jdk-${JAVA_VERSION}.tgz
 
 RUN alternatives --install /usr/bin/java java /opt/jdk1.8.0_151/bin/java 2
 RUN alternatives --install /usr/bin/jar jar /opt/jdk1.8.0_151/bin/jar 2
