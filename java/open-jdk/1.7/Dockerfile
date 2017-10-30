@@ -7,4 +7,4 @@ RUN yum -y update && \
  yum -y install wget && \
  yum -y install tar
  
-yum install java-1.7.0-openjdk
+RUN yum -y install java-1.7.0-openjdk
