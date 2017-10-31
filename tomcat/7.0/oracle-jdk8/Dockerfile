@@ -1,4 +1,4 @@
-FROM wroquem/oracle-jdk:8
+FROM wroquem/oracle-jdk:1.8
 
 MAINTAINER Warren Roque <wroquem@gmail.com>
 
