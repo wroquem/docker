@@ -1,4 +1,4 @@
-FROM wroquem/oracle-jdk:1.7
+FROM wroquem/open-jdk:1.7
 
 MAINTAINER Warren Roque <wroquem@gmail.com>
 
@@ -13,8 +13,8 @@ MAINTAINER Warren Roque <wroquem@gmail.com>
 #https://www.apache.org
 
 ENV TOMCAT_MIRROR_URL https://www-us.apache.org
-ENV TOMCAT_MAJOR 8
-ENV TOMCAT_VERSION 8.5.23
+ENV TOMCAT_MAJOR 7
+ENV TOMCAT_VERSION 7.0.82
 ENV CATALINA_HOME /opt/tomcat
 
 RUN echo "Installing Tomcat ${TOMCAT_VERSION}..." && \
