@@ -18,7 +18,7 @@ ENV TOMCAT_VERSION 7.0.82
 ENV CATALINA_HOME /opt/tomcat
 
 RUN echo "Installing Tomcat ${TOMCAT_VERSION}..." && \
-wget -nv ${TOMCAT_MIRROR_URL}/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
+wget ${TOMCAT_MIRROR_URL}/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
 tar xzf /tmp/tomcat.tgz -C /opt && \
 mv /opt/apache-tomcat-${TOMCAT_VERSION} ${CATALINA_HOME} && \
 rm /tmp/tomcat.tgz
