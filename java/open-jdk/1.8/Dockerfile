@@ -7,4 +7,8 @@ RUN yum -y update && \
  yum -y install wget && \
  yum -y install tar
  
-RUN yum -y install java-1.8.0-openjdk
+RUN yum -y install java-1.8.0-openjdk-devel
+
+ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk
+ENV JRE_HOME /usr/lib/jvm/java-1.8.0-openjdk/jre
+ENV PATH $PATH:${JAVA_HOME}:${JRE_HOME}/bin
