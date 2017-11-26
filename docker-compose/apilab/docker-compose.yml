@@ -1,0 +1,38 @@
+version: '2'
+services:
+  mysql-bpm:
+    build: ./mysql-bpm
+    ports:
+      - 3311:3306
+    environment:
+      - MYSQL_DATABASE=api_flex_bpm
+      - MYSQL_USER=apiflex
+      - MYSQL_PASSWORD=apiflex
+      - MYSQL_ROOT_PASSWORD=root
+    command: mysqld --lower_case_table_names=1
+  mysql-core:
+    build: ./mysql-core
+    ports:
+      - 3312:3306
+    environment:
+      - MYSQL_DATABASE=api_flex_core
+      - MYSQL_USER=apiflex
+      - MYSQL_PASSWORD=apiflex
+      - MYSQL_ROOT_PASSWORD=root
+    command: mysqld --lower_case_table_names=1
+  tomcat-activiti-explorer:
+    build: ./tomcat-activiti-explorer
+    ports:
+      - 8501:8080
+  tomcat-activiti-rest:
+    build: ./tomcat-activiti-rest
+    ports:
+      - 8502:8080
+  tomcat-console:
+    build: ./tomcat-console
+    ports:
+      - 8503:8080
+  tomcat-endpoint:
+    build: ./tomcat-endpoint
+    ports:
+      - 8504:8080      
