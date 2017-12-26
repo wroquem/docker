@@ -5,7 +5,9 @@ MAINTAINER Warren Roque <wroquem@gmail.com>
 #install required packages
 RUN yum -y update && \
  yum -y install wget && \
- yum -y install tar
+ yum -y install tar && \
+ yum -y install zip && \
+ yum -y install unzip
 
 #set Oracle Java8 variables
 ENV JAVA_VERSION 8u151
