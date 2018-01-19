@@ -1,4 +1,4 @@
-FROM wroque/debian7-python2.6:1
+FROM wroquem/debian7-python2.6
 
 MAINTAINER Miguel Neyra
 
